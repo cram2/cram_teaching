@@ -282,9 +282,13 @@ wsl --set-default Ubuntu-20.04
 12. Launch Ubuntu-20.04 from the windows menu and enter the password 'cram' for the username 'cram'.
 13. Set Firewall to allow WSL comunication. Easiest by disabeling Firewall for public networks, but you can add a rule for WSL.
 14. `glxgears` will test the x-forwarding to VcXsrv. If nothing happens, check the VcXsrv and Firewall setup.
-    
+
+</details>
+
 ## Option 3: Use the VirtualBox image (recommended for MacOS and unmentioned OS)
-    
+
+<details>
+ 
 We tested the setup extensively with all our available capabilities, which exludes non-x64 CPUs, non-Debian Linux systems, Win11 and 8.1, MacOS and other unmentioned operating systems. This means, that the above mentioned options may not work for your specific machine. If you want to save yourself some time and trouble, use [this Virtualbox image](https://seafile.zfn.uni-bremen.de/d/0728fcdc7bb14db7819f/) and check out [this guide](https://cram-system.org/tutorials/demo/fetch_and_place) for how to configure it. Keep in mind though, that this VM will perform much worse and should only be used as a fallback.
     
 </details>
