@@ -1,0 +1,6 @@
+# Ignore everything in these directories
+**/.ipynb_checkpoints/*
+**/common-lisp-jupyter/*
+# Except this file
+!.gitignore
+
