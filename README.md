@@ -31,7 +31,7 @@ On Windows it offers some options for recovery, which is from the chosen trouble
 
 </details>
 
-## Option 1: Docker Compose Setup (recommended for Linux)
+## Option 1: Docker Compose Setup (recommended for Linux an Windows 11)
 
 <details>
     <summary>Linux</summary>
@@ -233,6 +233,7 @@ VcXsrv is an X-server, that is able to visualize OpenGL application from remote 
 * copy the '127.x.x.x:8888/some-authentication-token' URL and put it into your favourite browser
 
 </details>
+
     
 <details>
     <summary>Mac</summary>
@@ -243,7 +244,7 @@ There's no guide to establish X-Forwarding out of the Docker container yet. Feel
 
 </details>
 
-## Option 2: WSL2 image install (recommended for Windows)
+## Option 2: WSL2 image install (recommended for Windows 10)
 
 <details>
 
