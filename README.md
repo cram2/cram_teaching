@@ -31,7 +31,7 @@ On Windows it offers some options for recovery, which is from the chosen trouble
 
 </details>
 
-## Option 1: Docker Compose Setup (recommended for Linux an Windows 11)
+## Option 1: Docker Compose Setup (recommended for Linux and Windows 11)
 
 <details>
     <summary>Linux</summary>
