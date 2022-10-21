@@ -249,7 +249,11 @@ There's no guide to establish X-Forwarding out of the Docker container yet. Feel
 <details>
 
 Windows Subsystem for Linux manages Linux distributions (operating systems) on a Windows host machine. Running the lecture directly from WSL is way smoother that from Docker Desktop, at least for Windows host machines, because it can utilize the GPU for rendering, while Docker Desktop on Windows only works on the CPU, for now. We prepared a WSL image, which is based on Ubuntu 20.04 and has all the necessary software preinstalled, so you can plug and play the lectures. And don't be intimidated by the terminal if you've never worked with Linux before. The key is to read the response from each command to know if it was successful or not. When in doubt, we have multiple tutors that are happy to explain things to individual students during the lecture.
-    
+
+### Build your own WSL Ubuntu
+
+[Here's the install guide](https://github.com/cram2/cram_teaching/blob/main/README_WSL.md) if you want to build up your own Ubuntu system, of if importing the existing image doesn't work.
+
 ### Import the WSL image into your WSL
 Most of these steps are elaborated in the Docker setup for Windows, like VcXsrv, WSL2 and Firewall setup.
     
