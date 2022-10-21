@@ -299,7 +299,7 @@ We tested the setup extensively with all our available capabilities, which exlud
 <details>
 
 0. Make sure that your X-Forwarding works properly (see setup guides)
-1. Download this repo as zip and unpack it, or use `git clone https://github.com/IntEL4CoRo/ease_fall_school_2022.git` if you have git installed.
+1. Download this repo as zip and unpack it, or use `git clone https://github.com/cram2/cram_teaching.git` if you have git installed.
 2. Open the terminal (bash, powershell, etc.) and change-directory (`cd`) to the repo
 3. Execute `docker-compose up` and wait for the image to be pulled
 4. copy the URL from the terminal into your favourite browser
