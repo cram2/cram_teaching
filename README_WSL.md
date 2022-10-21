@@ -170,3 +170,19 @@ If that works, the VcXsrv OpenGL forwarding is set up successfully!
 ## Install the Lecture content
 
 Get the lecture with git. Continue with your lecture-specific procedure. Consider the slides for [Robot Programming with Lisp](https://ai.uni-bremen.de/teaching/cs-lisp-ws22) for how to set up your repository, or [follow the Readme here](https://github.com/cram2/cram_teaching/blob/main/README.md#getting-the-lectures-docker-container) for the general setup without assignments.
+
+One last thing needs to be adjusted for Windows users. Open the `docker-compose.yml` file with nano
+```bash
+nano docker-compose.yml
+```
+and change the network_mode to bridge, such that it says
+```yaml
+version: '3'
+services:  
+  cram:
+    image: "arthurniedz/cram:latest"
+    container_name: cram_container
+  # for windows and mac, use 'network_mode: bridge'
+    network_mode: bridge 
+    ....
+```
