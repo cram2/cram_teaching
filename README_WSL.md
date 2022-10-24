@@ -87,7 +87,7 @@ echo \
 # Start Docker daemon automatically when logging in if not running.
 RUNNING=`ps aux | grep dockerd | grep -v grep`
 if [ -z "$RUNNING" ]; then
-    echo "Starting the docker service requires root rights."
+    echo "Please enter you password to start Docker."
     sudo dockerd > /dev/null 2>&1 &
     disown
 fi' >> ~/.bashrc 
