@@ -125,7 +125,7 @@
   Loop while there are still treasures in the world and collect them all.")
   (:method ((world treasure-world))
     (loop while (treasures world)
-          do ;; TODO Implement 1P
+          ;; TODO Implement 1P
           )))
 ;; Method definition ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;
