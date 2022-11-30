@@ -1,0 +1,14 @@
+# docker-compose-headless.yml
+# docker-compose -f docker-compose-headless.yml up
+version: '3'
+services:  
+  cram:
+    image: "arthurniedz/cram:headless-1.0"
+    container_name: cram_container
+    network_mode: host  
+    privileged: true
+    environment:
+      - DISPLAY=${DISPLAY}
+    volumes:
+      - ./lectures:/home/lectures
+    entrypoint: ./lectures/init.sh
