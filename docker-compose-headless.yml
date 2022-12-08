@@ -3,12 +3,12 @@
 version: '3'
 services:  
   cram:
-    image: "arthurniedz/cram:headless-1.0"
-    container_name: cram_container
+    image: "arthurniedz/cram:headless-1.2"
+    container_name: cram_headless
     network_mode: host  
     privileged: true
     environment:
       - DISPLAY=${DISPLAY}
     volumes:
       - ./lectures:/home/lectures
-    entrypoint: ./lectures/init.sh
+    # entrypoint: ./lectures/init.sh
