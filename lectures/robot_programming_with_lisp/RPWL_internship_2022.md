@@ -29,7 +29,7 @@ In one terminal run `roscore`, then open another terminal and run
 # Tortugabot
 roslaunch tortugabot_bringup base_and_joy_and_laser.launch
 ``` 
-This will run the drivers for Roboclaw, Hokuyo and the PS3 Controller. Check the console for any errors. You should be able to move the Tortugabot with the Controller now: Hold R1 while using the left and right analog sticks.
+This will run the drivers for Roboclaw, Hokuyo and the PS3 Controller. Check the console for any errors. You should be able to move the Tortugabot with the Controller now: Hold L1 while using the left and right analog sticks.
 
 ### Connect to the Tortugabot remotely
 Your personal laptop and the Tortugabot laptop communicate via ROS. For that they need to be in the same WiFi network. Make sure that both PCs are in the same WiFi. You will communicate with the Tortugabot via the Docker Image.
