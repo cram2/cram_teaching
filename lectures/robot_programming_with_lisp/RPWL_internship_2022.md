@@ -1,4 +1,4 @@
-Hello everyone. In this intershipt you will write code to control Tortugabots on their way through the building. You will work in pairs - two people form a group. Each group can work on the turtles every Thursday afternoon. In the 5th week the turtles will be let loose to search for treasures.
+Hello everyone. In this intership you will write code to control Tortugabots on their way through the building. You will work in pairs - two people form a group. Each group can work on the turtles every Thursday afternoon. In the 5th week the turtles will be let loose to search for treasures.
 
 ## Lecture 1 - Remote control tortuga
 The Tortugabot System consists of multiple parts:
