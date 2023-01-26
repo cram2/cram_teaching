@@ -25,7 +25,6 @@ Start a ros node
 ```lisp
 (roslisp:start-ros-node "tf-listener")
 ```
-Change the frames in the turtle_goal_referee/src/room.lisp and /goal-publisher.lisp files to position the goals, trash and depots as you like.
 This will initialize the buffer client. Initialize it every time you restart the buffer server.
 ```lisp
 (init-tf-listener)
@@ -35,5 +34,4 @@ Now use the `*tf-listener*` to lookup transforms, e.g. for a goal:
 ```
 (cl-tf2:lookup-transform *tf-listener* "map" "goal_1")
 ```
-
-
+Change the frames in the turtle_goal_referee/src/room.lisp and /goal-publisher.lisp files to position the goals, trash and depots as you like.
