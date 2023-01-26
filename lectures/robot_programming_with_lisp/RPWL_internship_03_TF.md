@@ -19,13 +19,15 @@ In Lisp, the following initislizes the connection to the TF buffer.
 (defparameter *tf-listener* nil)
 
 (defun init-tf-listener ()
-  (unless (eq (roslisp:node-status) :RUNNING)
-    (roslisp:start-ros-node "tf-listener"))
   (setf *tf-listener* (make-instance 'cl-tf2:buffer-client)))
+```
+Start a ros node
+```lisp
+(roslisp:start-ros-node "tf-listener")
 ```
 
 This will initialize the buffer client. Initialize it every time you restart the buffer server.
-```
+```lisp
 (init-tf-listener)
 ``` 
 
