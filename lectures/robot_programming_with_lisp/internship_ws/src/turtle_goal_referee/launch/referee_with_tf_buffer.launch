@@ -1,0 +1,9 @@
+<launch>
+  
+  <!-- Buffer Server -->
+  <node pkg="tf2_ros" type="buffer_server" name="buffer_tf"/>
+  
+  <!-- Referee Node-->
+  <node pkg="turtle_goal_referee" type="referee" name="referee_01"/>
+  
+</launch>
