@@ -145,7 +145,7 @@ adds the object to the `world' object."))
 ;; END Add Entities ;;
 ;;;;;;;;;;;;;;;;;;;;;;
 
-(defun initialize-world ()
+(defun initialize-world (&key headless)
   "Tests the OOP world implementation.
 Adjust the code below to spawn walls, treasures and the robot.
 
@@ -167,7 +167,8 @@ of those coordinates. Fill the world with walls, treasures and a robot."
   ;; by pressing C-SPACE, then use your arrow keys up or down. Having the lines
   ;; selected, press M-; (or on a german keyboard M-SHIFT-,) to toggle the comment.
   ;; ----------------
-  (btr-wrapper::init-world)
+    (unless headless
+        (btr-wrapper::init-world))
   (let* ((world (make-instance 'treasure-world))
         ;; wall-coords contains a list of all coordinates of the walls.
         (wall-coords (append
@@ -227,7 +228,8 @@ of those coordinates. Fill the world with walls, treasures and a robot."
                                    :world world)
                     world))
 
-   (visualize-simulation world)
+        (unless headless
+            (visualize-simulation world))
     world))
 
 (defgeneric visualize-simulation (world)
