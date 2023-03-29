@@ -15,9 +15,6 @@ http://wiki.ros.org/ROS/Tutorials#Beginner_Level
 and if the Website is down, use the archive:
 https://web.archive.org/web/20181118205753/wiki.ros.org/ROS/Tutorials#Beginner_Level
 
-Minimal Emacs cheat sheet:
-https://hackmd.informatik.uni-bremen.de/sydL1klfSz2kJztB4MeoLA#
-
 Once you're done with these, you can get to the roslisp tutorial:
 http://wiki.ros.org/roslisp/Tutorials/OverviewVersion
 
@@ -26,6 +23,7 @@ don't have any typos and that you execute the commands in the correct directory.
 Some of the descriptions in the tutorial are very concise which means
 that you need to understand what's going on in order to be able to follow it.
 If you were attentive in the beginner tutorials that should not be a problem.
+Instead of roslisp_repl you can use jupyter notebook to execute the tutorial code. 
 
 Before you go into the assignment, build your workspace and set up your entrypoint:
 
