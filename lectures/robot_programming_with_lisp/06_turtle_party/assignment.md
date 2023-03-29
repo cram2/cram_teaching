@@ -23,6 +23,7 @@ don't have any typos and that you execute the commands in the correct directory.
 Some of the descriptions in the tutorial are very concise which means
 that you need to understand what's going on in order to be able to follow it.
 If you were attentive in the beginner tutorials that should not be a problem.
+Instead of roslisp_repl you can use jupyter notebook to execute the tutorial code. 
 
 Before you go into the assignment, build your workspace and set up your entrypoint:
 
@@ -47,12 +48,8 @@ Here are a couple of hints for you, just in case:
 - The `.lisp` files are usually located under the `src` directory of your package
    or in a subdirectory thereof, e.g. `tutorial_ros_package/src/some-file.lisp`
    or `lisp_turtles/src/turtles/some-other-file.lisp`.
-- `.msg` and `.srv` files are always located in their own directories
-   under the root of your ROS package, e.g. `tutorial_ros_package/msg/MyAwesome.msg`
-   or `tutorial_ros_package/srv/MyAwesome.srv`.
-- When you rebuild your workspace, **restart the JupterNotebook** to apply any new sources like msg or srv.
+- When you rebuild your workspace, **restart the JupterNotebook** to apply any new sources.
 - If you get errors in your Lisp shell it might help to restart the Jupyter kernel completely.
-- Use multiple Notebook files to run processes in parallel, like publishers and subscribers.
 
 Once you're done with the tutorial and your turtle is successfully creating
 amazing pieces of turtle art, the things you need to add are these:
@@ -61,9 +58,9 @@ amazing pieces of turtle art, the things you need to add are these:
     add the corresponding entry into the `lisp-turtles.asd` file.
 2. In the file `lisp_turtles/src/turtles/turtle-party.lisp` define a function
     DRAW that accepts one argument - TURTLE-ID - such that when
-    `REPL> (draw 1)` is executed the turtle with the name "turtle1" would start
-    drawing random things, just as it is done in the very end of the roslisp tutorial.
-    When `REPL> (draw 2)` is executed the turtle named "turtle2" starts drawing.
+    `REPL> (loop-at-most-every 1 (draw 1))` is executed the turtle with the name "turtle1" would start
+    drawing random things, just as in the very end of the roslisp tutorial.
+    When `REPL> (loop-at-most-every 1 (draw 2))` is executed the turtle named "turtle2" starts drawing.
 3. In the same file `lisp_turtles/src/turtles/turtle-party.lisp`
     create a function TURTLE-PARTY that takes one argument - TURTLE-COUNT -
     and does the following:
