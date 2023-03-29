@@ -3,19 +3,6 @@
 ;;; Welcome to Assignment 2 of the "Robot Programming with Lisp" course.
 ;;; (7 Points)
 ;;;
-;;; ## How to load the assignment
-;;;
-;;; To load the assignment in emacs, go into the REPL and type:
-;;; ,ros-load-system <RETURN>
-;;; assignment_2 <RETURN> <RETURN>
-;;; This will compile the code and dependencies for a while.
-;;; After that, go into the assignment with
-;;; ,!p <RETURN>
-;;; assignment-2 <RETURN>
-;;;
-;;; Now call the function to initialize the simulation:
-;;; (initialize-world)
-;;;
 ;;;
 ;;; ## About the world
 ;;;
