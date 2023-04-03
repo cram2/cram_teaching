@@ -17,7 +17,9 @@
                        (assert-true (every #'(lambda (x y) (valid-move (make-instance 'robot
                                                                                       :coordinate (make-coordinate :x (first x) :y (second x))
                                                                                       :orientation (third x))
-                                                                       (first y) (second y) (third y))) path (rest path))))))))
+                                                                       (first y) (second y) (third y))) path (rest path))))))
+         "Checks if FIND-PATH finds path of optimal length."
+         (assert-true (every #'(lambda (x y) (eq (length (find-path x)) y)) (treasures *world*) '(1 3 18 16 20 21 21 25 19 0)))))
 
 (define-test remove-unreachable-treasures
     (let* ((world (initialize-world))
