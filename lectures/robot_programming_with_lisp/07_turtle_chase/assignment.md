@@ -99,14 +99,9 @@ CTRL-C kills the echo.
 In the file "turtlesim-tf.lisp" write a function FOLLOW-TURTLE-IN-A-LOOP
 which accepts 2 arguments: FOLLOWER-NAME and FOLLOWEE-NAME, which are turtle names,
 e.g. the strings "turtle1" and "turtle2".
-This function
-
- * initializes a new CL-TF:TRANSFORM-LISTENER and a new publisher
-    for turtle command velocities (see the SET-TURTLE-VELOCITY function from
-    assignment_6) that will send commands to the turtle called FOLLOWER-NAME.
- * in an endless loop with 100 Hz frequency (every 0.01 seconds) it looks
-    up the coordinates of FOLLOWEE-NAME relative to FOLLOWER-NAME and gives
-    FOLLOWER-NAME a navigation command.
+This function runs an endless `loop-at-most-every` 0.01 seconds (that is 100Hz). 
+In that loop it gets the transform between FOLLOWER and FOLLOWEE to calculate the 
+linear and angular velocity of the FOLLOWER. Finally it will `set-turtle-velocity` of the FOLLOWER.
 
 You may reuse the code from the CL-TF tutorial here: http://wiki.ros.org/cl_tf/Tutorials/clTfBasicUsage
 
