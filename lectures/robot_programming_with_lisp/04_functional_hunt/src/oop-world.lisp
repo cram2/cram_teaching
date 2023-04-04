@@ -109,14 +109,16 @@ room for two treasures in his trunk."))
               (12 5) (12 9)
               (13 3) (13 9))) :test 'equal)
 
+(defvar *headless* nil)
 
-(defun initialize-world (&optional (random-scene nil))
+(defun initialize-world (&optional (random-scene nil) &key (headless *headless*))
   "Initializes the simulation and world and resets global variables.
 Fills it with walls with the coordinates of the grid world.
 Also creates 1 robot in the 15x16 world.
 Spawns 10 treasures.
 Also launches the visualization."
-  (btr-wrapper:init-world)
+    (unless headless
+        (btr-wrapper:init-world))
   (let* ((world (make-instance 'treasure-world))
          (scene0 '(((2 2) (8 12))
                    (1 3)
@@ -156,14 +158,16 @@ Also launches the visualization."
     (add-object-to-world 'robot world :turtle1
                          (make-coordinate :x (first (second scene)) :y (second (second scene)))
                          :orientation :EAST :trunk #(nil nil))
-    (visualize-simulation world)
+
+        (visualize-simulation world)
     world))
 
 
-(defgeneric visualize-simulation (world)
+(defgeneric visualize-simulation (world &key headless)
   (:documentation "Spawns all entities of the world into the bullet world.
 Removes treasures if they no longer exist and teleports the robot with treasures in its trunk.")
-  (:method ((world treasure-world))
+  (:method ((world treasure-world) &key (headless *headless*))
+    (unless headless
     (unless btr-wrapper:*world-initialized*
       (flet ((spawn-entity (entity)
                (with-slots (name coordinate) entity
@@ -194,5 +198,4 @@ Removes treasures if they no longer exist and teleports the robot with treasures
                                   (when (aref (trunk (robot world)) 0)
                                     (name (aref (trunk (robot world)) 0)))
                                   (when (aref (trunk (robot world)) 1)
-                                    (name (aref (trunk (robot world)) 1))))))
-
+                                    (name (aref (trunk (robot world)) 1)))))))
