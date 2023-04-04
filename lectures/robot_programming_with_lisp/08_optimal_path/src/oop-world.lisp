@@ -2,6 +2,9 @@
 
 (in-package optimal-path)
 
+(defvar *headless* nil)
+
+
 (defstruct coordinate
   (x 0 :type integer)
   (y 0 :type integer))
@@ -108,8 +111,6 @@ room for two treasures in his trunk."))
               (12 5) (12 9)
               (13 3) (13 9))) :test 'equal)
 
-(defvar *headless* nil)
-
 (defun initialize-world (&optional (random-scene nil) &key (headless *headless*))
   "Initializes the simulation and world and resets global variables.
 Fills it with walls with the coordinates of the grid world.
@@ -193,35 +194,35 @@ Also launches the visualization."
 
 (defmethod visualize-world ((world treasure-world) &key (headless *headless*))
   (unless headless
-  (unless btr-wrapper::*world-initialized*
-    (flet ((spawn-entity (entity)
-             (with-slots (name coordinate) entity
-               (btr-wrapper:spawn (slot-value coordinate 'x)
-                                  (slot-value coordinate 'y)
-                                  (type-of entity)
-                                  (when (or (eq (type-of entity) 'depot)
-                                            (eq (type-of entity) 'treasure))
-                                    (color entity))))))
-      (with-slots (robot treasures depots) world
-        (mapcar #'spawn-entity
-                (append treasures
-                        (alexandria:hash-table-values depots)
-                        (list robot))))
-      (setf btr-wrapper::*world-initialized* t)))
-  (let ((treasure-coords (mapcar 'coord (append (treasures world)
-                                                (remove-if-not 'identity
-                                                               (coerce (trunk (robot world)) 'list))))))
-    (loop for x to 14
-          do (loop for y to 15
-                   do (unless (member (make-coordinate :x x :y y) treasure-coords :test 'equalp)
-                        (when (btr:object btr:*current-bullet-world*
-                                          (intern (format nil "TREASURE~a-~a" x y)))
-                          (btr-utils:kill-object (intern (format nil "TREASURE~a-~a" x y))))))))
-  (btr-wrapper:teleport-turtle (coordinate-x (coord (robot world)))
-                                (coordinate-y (coord (robot world)))
-                                (orientation (robot world))
-                                (when (aref (trunk (robot world)) 0)
-                                  (name (aref (trunk (robot world)) 0)))
-                                (when (aref (trunk (robot world)) 1)
-                                  (name (aref (trunk (robot world)) 1))))))
+    (unless btr-wrapper::*world-initialized*
+      (flet ((spawn-entity (entity)
+               (with-slots (name coordinate) entity
+                 (btr-wrapper:spawn (slot-value coordinate 'x)
+                                    (slot-value coordinate 'y)
+                                    (type-of entity)
+                                    (when (or (eq (type-of entity) 'depot)
+                                              (eq (type-of entity) 'treasure))
+                                      (color entity))))))
+        (with-slots (robot treasures depots) world
+          (mapcar #'spawn-entity
+                  (append treasures
+                          (alexandria:hash-table-values depots)
+                          (list robot))))
+        (setf btr-wrapper::*world-initialized* t)))
+    (let ((treasure-coords (mapcar 'coord (append (treasures world)
+                                                  (remove-if-not 'identity
+                                                                 (coerce (trunk (robot world)) 'list))))))
+      (loop for x to 14
+            do (loop for y to 15
+                     do (unless (member (make-coordinate :x x :y y) treasure-coords :test 'equalp)
+                          (when (btr:object btr:*current-bullet-world*
+                                            (intern (format nil "TREASURE~a-~a" x y)))
+                            (btr-utils:kill-object (intern (format nil "TREASURE~a-~a" x y))))))))
+    (btr-wrapper:teleport-turtle (coordinate-x (coord (robot world)))
+                                 (coordinate-y (coord (robot world)))
+                                 (orientation (robot world))
+                                 (when (aref (trunk (robot world)) 0)
+                                   (name (aref (trunk (robot world)) 0)))
+                                 (when (aref (trunk (robot world)) 1)
+                                   (name (aref (trunk (robot world)) 1))))))
 

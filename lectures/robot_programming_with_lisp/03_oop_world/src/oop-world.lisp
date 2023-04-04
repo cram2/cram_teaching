@@ -240,7 +240,7 @@ This implementation depends heavily on the class `world' to be implemented corre
 Use this function to see, if you did something wrong in your setup of the world."))
 
 (defmethod visualize-simulation ((world treasure-world) &key (headless *headless*))
-  ; -----------------
+  ;; -----------------
   ;; Like for the 'initialize-world' function, uncomment the body of this function as
   ;; soon as your coordinate struct and the classes are implemented. To see
   ;; how it's done look at the comment in the 'initialize-world' function.
@@ -248,25 +248,25 @@ Use this function to see, if you did something wrong in your setup of the world.
   ;; -----------------
 
   ;; UNCOMMENT to visualize
-    (unless headless
-        (unless btr-wrapper:*world-initialized*
-        (btr-wrapper:init-world)
-        (flet ((spawn-entity (entity)
-                 (with-slots (name coordinate) entity
-                   (btr-wrapper:spawn (slot-value coordinate 'x)
-                                      (slot-value coordinate 'y)
-                                      (type-of entity)))))
-          (with-slots (robot treasures) world
-            (mapcar #'spawn-entity
-                    (append treasures (list robot))))
-          (setf btr-wrapper:*world-initialized* t)))
-      (btr-wrapper:teleport-turtle (slot-value (coord (robot world)) 'x)
-                                   (slot-value (coord (robot world)) 'y)
-                                   (orientation (robot world)))
-      (let ((treasure-coords (mapcar 'coord (treasures world))))
-        (loop for x to 14
-              do (loop for y to 15
-                       do (unless (member (make-coordinate :x x :y y) treasure-coords :test 'equalp)
-                            (when (btr:object btr:*current-bullet-world*
-                                              (intern (format nil "TREASURE~a-~a" x y)))
-                              (btr-utils:kill-object (intern (format nil "TREASURE~a-~a" x y))))))))))
+  (unless headless
+    (unless btr-wrapper:*world-initialized*
+      (btr-wrapper:init-world)
+      (flet ((spawn-entity (entity)
+               (with-slots (name coordinate) entity
+                 (btr-wrapper:spawn (slot-value coordinate 'x)
+                                    (slot-value coordinate 'y)
+                                    (type-of entity)))))
+        (with-slots (robot treasures) world
+          (mapcar #'spawn-entity
+                  (append treasures (list robot))))
+        (setf btr-wrapper:*world-initialized* t)))
+    (btr-wrapper:teleport-turtle (slot-value (coord (robot world)) 'x)
+                                 (slot-value (coord (robot world)) 'y)
+                                 (orientation (robot world)))
+    (let ((treasure-coords (mapcar 'coord (treasures world))))
+      (loop for x to 14
+            do (loop for y to 15
+                     do (unless (member (make-coordinate :x x :y y) treasure-coords :test 'equalp)
+                          (when (btr:object btr:*current-bullet-world*
+                                            (intern (format nil "TREASURE~a-~a" x y)))
+                            (btr-utils:kill-object (intern (format nil "TREASURE~a-~a" x y))))))))))
