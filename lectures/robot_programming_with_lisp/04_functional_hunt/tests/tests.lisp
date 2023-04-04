@@ -6,24 +6,24 @@
           (orientation-test :SOUTH)
           (robot (robot (initialize-world))))
          (move robot (coordinate-x coord-test) (coordinate-y coord-test) orientation-test)
-         (assert-equalp (coord robot) coord-test)
-         (assert-eq (orientation robot) orientation-test))
+         (assert-equalp coord-test (coord robot))
+         (assert-eq orientation-test (orientation robot)))
 
     "Tests if the robot only updates its position if the orientation is wrong."
     (let* ((coord-test (make-coordinate :x 2 :y 3))
            (robot (robot (initialize-world)))
            (orientation-robot (orientation robot)))
           (move robot (coordinate-x coord-test) (coordinate-y coord-test) :MOSS)
-          (assert-equalp (coord robot) coord-test)
-          (assert-eq (orientation robot) orientation-robot))
+          (assert-equalp coord-test (coord robot))
+          (assert-eq orientation-robot (orientation robot)))
 
     "Tests if the robot only change its orientation if the coordinate is wrong."
     (let* ((robot (robot (initialize-world)))
            (coord-robot (coord robot))
            (orientation-test :NORTH))
           (move robot -1 -2 orientation-test)
-          (assert-equalp (coord robot) coord-robot)
-          (assert-eq (orientation robot) orientation-test)))
+          (assert-equalp coord-robot (coord robot))
+          (assert-eq orientation-test (orientation robot))))
 
 (define-test collect-treasure
     (let* ((world (initialize-world))
