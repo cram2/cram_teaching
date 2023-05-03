@@ -1,4 +1,4 @@
-(in-package :simple-world)
+(in-package :simple-world-tests)
 
 (define-test place-object
     (initialize-walls)
@@ -68,6 +68,6 @@
     (setf *treasures-found* 0
           *treasures* '(test test2)
           (aref *world-map* 2 2) 'test
-          (aref *world-map* 3 3) 'test2)
+          (aref *world-map* 2 3) 'test2)
     (discover-world)
     (assert-eq 2 *treasures-found*))
