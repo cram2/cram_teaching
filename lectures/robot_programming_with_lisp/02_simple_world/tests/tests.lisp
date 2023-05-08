@@ -1,5 +1,9 @@
 (in-package :simple-world-tests)
 
+(setf *print-failures* t
+      *print-errors* t
+      *headless* t)
+
 (define-test place-object
     (initialize-walls)
     "Iterates over all objects and checks if PLACE-OBJECT doesn't overwrite them."

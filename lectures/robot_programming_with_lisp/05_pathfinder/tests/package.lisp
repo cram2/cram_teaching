@@ -1,6 +1,6 @@
 (in-package :cl-user)
-(defpackage oop-world-tests
+(defpackage pathfinder-tests
     (:use #:common-lisp 
           #:lisp-unit
-          #:oop-world)
+          #:pathfinder)
     (:export))

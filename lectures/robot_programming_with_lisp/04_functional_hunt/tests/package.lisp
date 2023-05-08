@@ -1,6 +1,6 @@
 (in-package :cl-user)
-(defpackage oop-world-tests
+(defpackage functional-hunt-tests
     (:use #:common-lisp 
           #:lisp-unit
-          #:oop-world)
+          #:functional-hunt)
     (:export))

@@ -1,4 +1,8 @@
-(in-package :oop-world)
+(in-package :oop-world-tests)
+
+(setf *print-failures* t
+      *print-errors* t
+      *headless* t)
 
 (define-test make-coordinate
     (let ((coord (make-coordinate)))
@@ -6,28 +10,62 @@
          (assert-eq 0 (coordinate-y coord))))
 
 (define-test make-instance-treasure-world
-    (let ((world (make-instance 'treasure-world)))
-         (assert-false (robot world))
-         (assert-false (walls world))
-         (assert-false (treasures world))))
+    (let ((slots (closer-mop:class-direct-slots (find-class 'treasure-world))))
+         ;; Check robot
+         (assert-equal 'ROBOT (closer-mop:slot-definition-name (first slots)))
+         (assert-equal '(ROBOT) (closer-mop:slot-definition-readers (first slots)))         
+         (assert-equal 'ROBOT (closer-mop:slot-definition-type (first slots)))
+         (assert-equal '(:ROBOT) (closer-mop:slot-definition-initargs (first slots)))
+         (assert-equal nil (closer-mop:slot-definition-initform (first slots)))
+                       
+         ; Check walls
+         (assert-equal 'WALLS (closer-mop:slot-definition-name (second slots)))
+         (assert-equal '(WALLS) (closer-mop:slot-definition-readers (second slots)))         
+         (assert-equal 'LIST (closer-mop:slot-definition-type (second slots)))
+         (assert-equal '(:WALLS) (closer-mop:slot-definition-initargs (second slots)))
+         (assert-equal '(LIST) (closer-mop:slot-definition-initform (second slots)))
+         
+         ; Check treasures
+         (assert-equal 'TREASURES (closer-mop:slot-definition-name (third slots)))
+         (assert-equal '(TREASURES) (closer-mop:slot-definition-readers (third slots)))         
+         (assert-equal 'LIST (closer-mop:slot-definition-type (third slots)))
+         (assert-equal '(:TREASURES) (closer-mop:slot-definition-initargs (third slots)))
+         (assert-equal '(LIST) (closer-mop:slot-definition-initform (third slots)))))
 
 (define-test make-instance-entity
-    (let ((entity (make-instance 'entity)))
-         (assert-true (coord entity))
-         (assert-false (world entity))
-         (assert-false (name entity))))
+    (let ((slots (closer-mop:class-direct-slots (find-class 'entity))))
+         ;; Check coord
+         (assert-equal 'COORDINATE (closer-mop:slot-definition-name (first slots)))
+         (assert-equal '(COORD) (closer-mop:slot-definition-readers (first slots)))         
+         (assert-equal 'COORDINATE (closer-mop:slot-definition-type (first slots)))
+         (assert-equal '(:COORD) (closer-mop:slot-definition-initargs (first slots)))
+         (assert-equal '(MAKE-COORDINATE) (closer-mop:slot-definition-initform (first slots)))
+                       
+         ; Check world
+         (assert-equal 'WORLD (closer-mop:slot-definition-name (second slots)))
+         (assert-equal '(WORLD) (closer-mop:slot-definition-readers (second slots)))         
+         (assert-equal 'TREASURE-WORLD (closer-mop:slot-definition-type (second slots)))
+         (assert-equal '(:WORLD) (closer-mop:slot-definition-initargs (second slots)))
+         (assert-equal nil (closer-mop:slot-definition-initform (second slots)))
+         
+         ; Check name
+         (assert-equal 'NAME (closer-mop:slot-definition-name (third slots)))
+         (assert-equal '(NAME) (closer-mop:slot-definition-readers (third slots)))         
+         (assert-equal 'SYMBOL (closer-mop:slot-definition-type (third slots)))
+         (assert-equal '(:NAME) (closer-mop:slot-definition-initargs (third slots)))
+         (assert-equal nil (closer-mop:slot-definition-initform (third slots)))))
     
 (define-test make-instance-treasure
-    (let ((treasure (make-instance 'treasure)))
-         (assert-eq :RED (color treasure))))
+    (let ((slots (closer-mop:class-direct-slots (find-class 'treasure))))
+         (assert-equal :RED (closer-mop:slot-definition-initform (first slots)))))
 
 (define-test make-instance-robot
-    (let ((robot (make-instance 'robot)))
-         (assert-eq :NORTH (orientation robot))))
+    (let ((slots (closer-mop:class-direct-slots (find-class 'robot))))
+         (assert-equal :NORTH (closer-mop:slot-definition-initform (first slots)))))
 
 (define-test add-to-world-treasure
     (let ((world (make-instance 'treasure-world))
-          (treasue (make-instance 'treasure)))
+          (treasure (make-instance 'treasure)))
          (add-to-world treasure world)
          (assert-true (member treasure (treasures world)))))
          

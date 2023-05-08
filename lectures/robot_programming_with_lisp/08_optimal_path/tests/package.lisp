@@ -1,6 +1,6 @@
 (in-package :cl-user)
-(defpackage oop-world-tests
+(defpackage optimal-path-tests
     (:use #:common-lisp 
           #:lisp-unit
-          #:oop-world)
+          #:optimal-path)
     (:export))

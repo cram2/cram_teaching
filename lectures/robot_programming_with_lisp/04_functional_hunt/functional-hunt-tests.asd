@@ -1,4 +1,4 @@
-(defsystem oop-world-tests
+(defsystem functional-hunt-tests
   :author "Stefan Eirich"
   :depends-on (bullet-wrapper lisp-unit)
   :components ((:module "tests"
@@ -6,4 +6,4 @@
                 ((:file "package")
                  (:file "tests" :depends-on ("package")))))
   :perform (test-op (operation component)
-                    (symbol-call :lisp-unit '#:run-tests :all :oop-world-tests)))
+                    (symbol-call :lisp-unit '#:run-tests :all :functional-hunt-tests)))
