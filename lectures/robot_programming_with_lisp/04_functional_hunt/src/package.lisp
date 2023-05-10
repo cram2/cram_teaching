@@ -4,9 +4,9 @@
   (:use #:common-lisp)
   (:export
    :*headless*
-   ENTITY
-   ROBOT
-   TREASURES
+   :ENTITY
+   :ROBOT
+   :TREASURES
    #:MAKE-COORDINATE
    #:COORDINATE-X
    #:COORDINATE-Y

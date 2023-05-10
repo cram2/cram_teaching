@@ -4,10 +4,10 @@
   (:use #:common-lisp)
   (:export
    :*headless*
-   ENTITY
-   DEPOT
-   WALL
-   TREASURE
+   :ENTITY
+   :DEPOT
+   :WALL
+   :TREASURE
    #:ROBOT
    #:COORD
    #:ORIENTATION
@@ -32,5 +32,4 @@
    #:FIND-PATH
    #:STEPS
    #:DEAD-ENDS
-   #:STEPS
-   ))
+   #:STEPS))
