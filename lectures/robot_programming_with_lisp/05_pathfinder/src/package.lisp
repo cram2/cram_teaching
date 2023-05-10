@@ -3,7 +3,7 @@
 (defpackage pathfinder
   (:use #:common-lisp)
   (:export
-   :*headless*
+   :*HEADLESS*
    :ENTITY
    :DEPOT
    :WALL

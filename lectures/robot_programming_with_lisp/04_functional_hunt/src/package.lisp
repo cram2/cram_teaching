@@ -3,7 +3,7 @@
 (defpackage functional-hunt
   (:use #:common-lisp)
   (:export
-   :*headless*
+   :*HEADLESS*
    :ENTITY
    :ROBOT
    :TREASURES
