@@ -69,9 +69,11 @@ Logout and login to make this change permanent.
 
 Do you have an NVIDIA GPU in your machine? Make sure you have the driver installed.
 
+<details>
+
 In Software & Updates > Additional Drivers > choose the latest NVIDIA driver.
 
-## Install Docker NVIDIA
+### Install Docker NVIDIA
 
 [Reference Manual](https://github.com/HoangGiang93/mujoco_sim_docker/blob/TiagoInApartment/setup_rviz.bash)
 
@@ -99,6 +101,8 @@ sudo systemctl daemon-reload
 ```bash
 sudo systemctl restart docker
 ```
+  
+</details>
 
 ## Start the docker container
 
