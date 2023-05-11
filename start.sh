@@ -3,6 +3,6 @@
 
 xhost +local:docker
 
-docker-compose up
+docker compose up cram-eurobin
 
 xhost -local:docker
