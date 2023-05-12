@@ -6,21 +6,12 @@ services:
   cram-eurobin:
     image: "arthurniedz/cram:test"
     container_name: cram-eurobin-container
-  # for windows and mac, use 'network_mode: bridge'
+    # for windows and mac, use 'network_mode: bridge'
     network_mode: host  
     privileged: true
-  ##############
-  # BEGIN Remove 
-  # Remove this section if docker-compose complains about network_mode: host and port forwarding on newer debian versions (22.04)
-    ports:
-      - "8888:8888"
-    expose:
-      - "8888"
-  # END Remove
-  ##############
     environment:
-      - DISPLAY=${DISPLAY}      
-  #    - ROS_MASTER_URI=http://192.168.xxx.x:11311  
+      - DISPLAY=
+    #  - ROS_MASTER_URI=http://192.168.xxx.x:11311  
     volumes:
       - ./lectures:/home/lectures
 
