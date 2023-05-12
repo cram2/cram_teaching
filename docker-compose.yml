@@ -10,7 +10,7 @@ services:
     network_mode: host  
     privileged: true
     environment:
-      - DISPLAY=
+      - DISPLAY
     #  - ROS_MASTER_URI=http://192.168.xxx.x:11311  
     volumes:
       - ./lectures:/home/lectures
