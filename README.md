@@ -108,7 +108,7 @@ sudo systemctl restart docker
 
 Run
 ```bash
-./start.sh
+./start_eurobin.sh
 ```
 
 The script will enable x-forwarding for docker and perform `docker compose up cram-eurobin`, which will pull the image from DockerHub and launch it.
