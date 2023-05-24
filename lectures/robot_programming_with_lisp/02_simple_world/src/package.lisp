@@ -2,6 +2,7 @@
 (defpackage simple-world
   (:use #:common-lisp)
   (:export
+   :*headless*
    :*treasures*
    :*treasures-found*
    :*world-map*

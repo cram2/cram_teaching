@@ -2,4 +2,22 @@
 
 (defpackage functional-hunt
   (:use #:common-lisp)
-  (:export))
+  (:export
+   :*HEADLESS*
+   :ENTITY
+   :ROBOT
+   :TREASURES
+   #:MAKE-COORDINATE
+   #:COORDINATE-X
+   #:COORDINATE-Y
+   #:COORD
+   #:ORIENTATION
+   #:INITIALIZE-WORLD
+   #:MOVE
+   #:COLLECT-TREASURE
+   #:DISTANCE
+   #:CLOSER
+   #:SORT-TREASURES-BY-DISTANCE
+   #:GET-ACCESS-POSE
+   #:CLOSEST-ACCESSIBLE-TREASURE
+   #:DISCOVER-WORLD))

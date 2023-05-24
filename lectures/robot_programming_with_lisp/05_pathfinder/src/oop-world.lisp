@@ -4,7 +4,6 @@
 
 (defvar *headless* nil)
 
-
 (defstruct coordinate
   (x 0 :type integer)
   (y 0 :type integer))
@@ -163,7 +162,7 @@ Also launches the visualization."
     (add-object-to-world 'robot world 'turtle1
                          (make-coordinate :x (first (second scene)) :y (second (second scene)))
                          :orientation :EAST :trunk #(nil nil))
-    (visualize-world world headless)
+    (visualize-world world :headless headless)
     world))
 
 (defmethod visualize-world ((world treasure-world) &key (headless *headless*))

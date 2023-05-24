@@ -4,7 +4,6 @@
 
 (defvar *headless* nil)
 
-
 (defstruct coordinate
   (x 0 :type integer)
   (y 0 :type integer))
@@ -160,37 +159,9 @@ Also launches the visualization."
                  (add-object-to-world 'treasure world (intern (format nil "TREASURE~a-~a" (first xy) (second xy)))
                                       (make-coordinate :x (first xy) :y (second xy)) :color (if (oddp i) :RED :BLUE)))
                (nth i (third scene))))
-    (visualize-world world)
+    (visualize-world world :headless headless)
     world))
 
-
-
-;; (defun test-me-cluttered ()
-;;   "Constructs a world, where the treasures are "
-;;   (btr-wrapper::init-world)
-;;   (let* ((world (make-instance 'treasure-world)))
-;;     (mapcar (lambda (xy)
-;;               (add-object-to-world 'wall  world (intern (format nil "WALL~a-~a" (first xy) (second xy)))
-;;                                    (make-coordinate :x (first xy) :y (second xy))))
-;;             +wall-coords+)
-;;     (add-object-to-world 'depot world 'depot-red (make-coordinate :x 2 :y 2) :color :RED)
-;;     (add-object-to-world 'depot world 'depot-blue (make-coordinate :x 8 :y 6) :color :BLUE)
-;;     (add-object-to-world 'treasure world (intern (format nil "TREASURE~a-~a" 1 8))
-;;                          (make-coordinate :x 1 :y 8) :color :red)
-;;     (add-object-to-world 'treasure world (intern (format nil "TREASURE~a-~a" 1 9))
-;;                          (make-coordinate :x 1 :y 9) :color :blue)
-;;     (add-object-to-world 'treasure world (intern (format nil "TREASURE~a-~a" 1 10))
-;;                          (make-coordinate :x 1 :y 10) :color :red)
-;;     (add-object-to-world 'treasure world (intern (format nil "TREASURE~a-~a" 2 8))
-;;                          (make-coordinate :x 2 :y 8) :color :red)
-;;     (add-object-to-world 'treasure world (intern (format nil "TREASURE~a-~a" 2 9))
-;;                          (make-coordinate :x 2 :y 9) :color :blue)
-;;     (add-object-to-world 'treasure world (intern (format nil "TREASURE~a-~a" 2 10))
-;;                          (make-coordinate :x 2 :y 10) :color :blue)
-;;     (add-object-to-world 'robot  world 'turtle1 (make-coordinate :x 8 :y 6)
-;;                          :orientation :NORTH)
-;;     (visualize-world world)
-;;     world))
 
 (defmethod visualize-world ((world treasure-world) &key (headless *headless*))
   (unless headless

@@ -159,7 +159,7 @@ Also launches the visualization."
     (add-object-to-world 'robot world :turtle1
                          (make-coordinate :x (first (second scene)) :y (second (second scene)))
                          :orientation :EAST :trunk #(nil nil))
-    (visualize-simulation world headless)
+    (visualize-simulation world :headless headless)
     world))
 
 

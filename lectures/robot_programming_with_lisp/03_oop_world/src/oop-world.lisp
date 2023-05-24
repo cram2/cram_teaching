@@ -2,7 +2,9 @@
 
 ;;; Welcome to Assignment 3 of the "Robot Programming with Lisp" course.
 ;;; (10 Points)
-;;;
+
+(defvar *headless* nil)
+
 ;;; We are back with the grid world. This assignment is split over two files
 ;;; The oop-world contains the object-oriented representation of the world.
 ;;; In treasure-hunt is the logic to move the robot and collect treasures.
@@ -145,8 +147,6 @@ adds the object to the `world' object."))
 ;; END Add Entities ;;
 ;;;;;;;;;;;;;;;;;;;;;;
 
-(defvar *headless* nil)
-
 (defun initialize-world (&key (headless *headless*))
   "Tests the OOP world implementation.
 Adjust the code below to spawn walls, treasures and the robot.
@@ -230,7 +230,7 @@ of those coordinates. Fill the world with walls, treasures and a robot."
                                    :world world)
                     world))
 
-          (visualize-simulation world)
+          (visualize-simulation world :headless headless)
     world))
 
 (defgeneric visualize-simulation (world &key headless)
